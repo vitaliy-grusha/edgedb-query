@@ -118,7 +118,7 @@ class Entity(Model):
             Query(client, QueryMethod.SINGLE_REQUIRED)
             .make(
                 f"""
-                SELECT investime_app::Entity {{
+                SELECT Entity {{
                      {cls.EdgeDB.query_required_fields}
                 }}
                 FILTER .id = <uuid>$id
@@ -135,16 +135,13 @@ class Entity(Model):
             .make(
                 f"""
                 WITH
-                    user := (SELECT investime_app::User filter .id = <uuid>$user_id),
-                    parent := (SELECT investime_app::Entity filter .id = <optional uuid>$parent_id)
+                    user := (SELECT User filter .id = <uuid>$user_id),
+                    parent := (SELECT Entity filter .id = <optional uuid>$parent_id)
                 SELECT (
-                    INSERT investime_app::Entity {{
+                    INSERT Entity {{
                         title := <str>$title,
                         user := user,
                         parent := parent,
-                        level := 0,
-                        hours := 0,
-                        archived := false,
                         update_datetime := std::datetime_current(),
                         create_datetime := std::datetime_current()
                     }}
