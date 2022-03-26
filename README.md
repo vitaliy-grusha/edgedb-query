@@ -28,8 +28,6 @@ class User(Model):
 
     id: UUID
     email: str
-    level: int
-    hours: float
     update_datetime: datetime
     create_datetime: datetime
 
@@ -91,9 +89,6 @@ class Entity(Model):
     user: User
     parent: Optional[EntityLazy] = None
     title: str
-    level: int
-    hours: int
-    archived: bool = False
     update_datetime: datetime
     create_datetime: datetime
 
