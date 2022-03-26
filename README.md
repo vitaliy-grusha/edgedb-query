@@ -1,6 +1,6 @@
 # edgedb-query
 
-Simple wrapper of edgedb python client with pydantic and anntotations.
+Simple wrapper for edgedb python client with pydantic and anntotations.
 
 ## Installation
 
